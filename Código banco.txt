@@ -1,0 +1,80 @@
+CREATE DATABASE FREEHIRE;
+
+USE FREEHIRE;
+
+CREATE TABLE freelancer
+(
+idFreelancer INT AUTO_INCREMENT PRIMARY KEY,
+free_nome VARCHAR(100) NOT NULL,
+free_cpf VARCHAR(15) NOT NULL,
+free_rua VARCHAR(300) NOT NULL,
+free_bairro VARCHAR(100) NOT NULL,
+free_cidade VARCHAR(100) NOT NULL,
+free_uf VARCHAR(2) NOT NULL,
+free_numero VARCHAR(100),
+free_cep VARCHAR(20),
+free_telefone VARCHAR(25) NOT NULL,
+free_email VARCHAR(80),
+free_avaliacao INT,
+free_observacaoAvaliacao VARCHAR(100)
+);
+
+SELECT * FROM freelancer;
+
+CREATE TABLE cliente
+(
+idCliente INT AUTO_INCREMENT PRIMARY KEY,
+cli_nome VARCHAR(100) NOT NULL,
+cli_cpf VARCHAR(15) NOT NULL,
+cli_rua VARCHAR(300) NOT NULL,
+cli_bairro VARCHAR(100),
+cli_cidade VARCHAR(100) NOT NULL,
+cli_uf VARCHAR(2) NOT NULL,
+cli_numero VARCHAR(100),
+cli_cep VARCHAR(20),
+cli_telefone VARCHAR(30) NOT NULL,
+cli_email VARCHAR(80),
+cli_avaliacao int,
+cli_observacaoAvaliacao VARCHAR(100)
+);
+
+SELECT * FROM cliente;
+
+CREATE TABLE projeto
+(
+idProjeto INT AUTO_INCREMENT PRIMARY KEY,
+nomeProjeto VARCHAR(100) NOT NULL,
+descricaoProjeto VARCHAR(300) NOT NULL,
+valorProjeto DECIMAL(15,2),
+valorAvaliacao DECIMAL(15,2),
+avaliacao INT,
+observacaoAvaliacao VARCHAR(100),
+idFreelancer INT,
+constraint foreign key(idFreelancer) references freelancer(idFreelancer)
+);
+
+SELECT * FROM projeto;
+
+CREATE TABLE proposta
+(
+idProposta INT AUTO_INCREMENT PRIMARY KEY,
+descricaoProposta VARCHAR(100),
+dataProposta DATE,
+valorProposta DECIMAL(15,2),
+observacaoProposta VARCHAR(300),
+idProjeto INT,
+idCliente INT,
+constraint foreign key(idProjeto) references projeto(idProjeto),
+constraint foreign key(idCliente) references cliente(idCliente)
+);
+
+SELECT * FROM proposta;
+
+CREATE TABLE usuario
+(
+idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+login VARCHAR(100) NOT NULL,
+senha VARCHAR(100) NOT NULL
+);
+
+SELECT * FROM usuario;
