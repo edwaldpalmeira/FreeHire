@@ -1,12 +1,9 @@
 package br.senac.freehire.model;
 
-import java.util.Date;
-
 public class Freelancer {
 	
 	private int idFreelancer;
 	private String nome;
-	private Date data_de_nascimento;
 	private String cpf;
 	private String rua;
 	private String bairro;
@@ -36,12 +33,6 @@ public class Freelancer {
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-	public Date getData_de_nascimento() {
-		return data_de_nascimento;
-	}
-	public void setData_de_nascimento(Date data_de_nascimento) {
-		this.data_de_nascimento = data_de_nascimento;
 	}
 	public String getRua() {
 		return rua;
