@@ -1,8 +1,8 @@
 package br.senac.freehire.service;
 
 import java.util.List;
-import br.senac.freehire.dao.DAOFreelancer;
-import br.senac.freehire.model.Freelancer;
+import br.senac.freehire.dao.DAOProposta;
+import br.senac.freehire.model.Proposta;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -13,14 +13,14 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("freelancer")
-public class FreelancerService {
-	
+@Path("proposta")
+public class PropostaService {
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void inserir(Freelancer freelancer) {
+	public void inserir(Proposta proposta) {
 		try {
-			DAOFreelancer.inserir(freelancer);
+			DAOProposta.inserir(proposta);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -28,9 +28,9 @@ public class FreelancerService {
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public static void atualizar(Freelancer freelancer) {
+	public static void atualizar(Proposta proposta) {
 		try {
-			DAOFreelancer.atualizar(freelancer);
+			DAOProposta.atualizar(proposta);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -38,21 +38,19 @@ public class FreelancerService {
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void excluir(@QueryParam("id") int idFreelancer) {
+	public void excluir(@QueryParam("id") int idProposta) {
 		try {
-			DAOFreelancer.excluir(idFreelancer);
+			DAOProposta.excluir(idProposta);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	@GET
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("pesquisar")
-	public List<Freelancer> pesquisar(@QueryParam("cpf") String cpf){
+	public List<Proposta> listar(){
 		try {
-			return DAOFreelancer.pesquisar(cpf);
+			return DAOProposta.listar();
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -60,15 +58,15 @@ public class FreelancerService {
 	}
 	
 	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Freelancer> listar(){
+	@Path("pesquisar")
+	public List<Proposta> pesquisar(@QueryParam("idProposta") int idProposta){
 		try {
-			return DAOFreelancer.listar();
+			return DAOProposta.pesquisar(idProposta);
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
-
 }

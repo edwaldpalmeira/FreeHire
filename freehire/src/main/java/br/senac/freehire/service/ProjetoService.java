@@ -1,8 +1,8 @@
 package br.senac.freehire.service;
 
 import java.util.List;
-import br.senac.freehire.dao.DAOFreelancer;
-import br.senac.freehire.model.Freelancer;
+import br.senac.freehire.dao.DAOProjeto;
+import br.senac.freehire.model.Projeto;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -13,14 +13,14 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("freelancer")
-public class FreelancerService {
+@Path("projeto")
+public class ProjetoService {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void inserir(Freelancer freelancer) {
+	public void inserir(Projeto projeto) {
 		try {
-			DAOFreelancer.inserir(freelancer);
+			DAOProjeto.inserir(projeto);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -28,9 +28,9 @@ public class FreelancerService {
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public static void atualizar(Freelancer freelancer) {
+	public static void atualizar(Projeto projeto) {
 		try {
-			DAOFreelancer.atualizar(freelancer);
+			DAOProjeto.atualizar(projeto);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -38,21 +38,19 @@ public class FreelancerService {
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void excluir(@QueryParam("id") int idFreelancer) {
+	public void excluir(@QueryParam("id") int idProjeto) {
 		try {
-			DAOFreelancer.excluir(idFreelancer);
+			DAOProjeto.excluir(idProjeto);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	@GET
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("pesquisar")
-	public List<Freelancer> pesquisar(@QueryParam("cpf") String cpf){
+	public List<Projeto> listar(){
 		try {
-			return DAOFreelancer.pesquisar(cpf);
+			return DAOProjeto.listar();
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -60,15 +58,16 @@ public class FreelancerService {
 	}
 	
 	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Freelancer> listar(){
+	@Path("pesquisar")
+	public List<Projeto> pesquisar(@QueryParam("nome") String nomeProjeto){
 		try {
-			return DAOFreelancer.listar();
+			return DAOProjeto.pesquisar(nomeProjeto);
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 		return null;
 	}
 	
-
 }

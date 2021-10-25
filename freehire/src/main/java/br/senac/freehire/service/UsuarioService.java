@@ -1,8 +1,8 @@
 package br.senac.freehire.service;
 
 import java.util.List;
-import br.senac.freehire.dao.DAOFreelancer;
-import br.senac.freehire.model.Freelancer;
+import br.senac.freehire.dao.DAOUsuario;
+import br.senac.freehire.model.Usuario;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -13,14 +13,14 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("freelancer")
-public class FreelancerService {
+@Path("usuario")
+public class UsuarioService {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void inserir(Freelancer freelancer) {
+	public static void inserir(Usuario usuario) {
 		try {
-			DAOFreelancer.inserir(freelancer);
+			DAOUsuario.inserir(usuario);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -28,19 +28,19 @@ public class FreelancerService {
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public static void atualizar(Freelancer freelancer) {
+	public static void atualizar(Usuario usuario) {
 		try {
-			DAOFreelancer.atualizar(freelancer);
-		}catch (Exception e) {
+			DAOUsuario.atualizar(usuario);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void excluir(@QueryParam("id") int idFreelancer) {
+	public static void excluir(@QueryParam("id") int idUsuario) {
 		try {
-			DAOFreelancer.excluir(idFreelancer);
+			DAOUsuario.excluir(idUsuario);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -50,9 +50,9 @@ public class FreelancerService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("pesquisar")
-	public List<Freelancer> pesquisar(@QueryParam("cpf") String cpf){
+	public List<Usuario> pesquisar(@QueryParam("id") int idUsuario){
 		try {
-			return DAOFreelancer.pesquisar(cpf);
+			return DAOUsuario.pesquisar(idUsuario);
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -61,9 +61,10 @@ public class FreelancerService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Freelancer> listar(){
+	@Path("pesquisar")
+	public List<Usuario> listar(){
 		try {
-			return DAOFreelancer.listar();
+			return DAOUsuario.listar();
 		}catch (Exception e){
 			e.printStackTrace();
 		}

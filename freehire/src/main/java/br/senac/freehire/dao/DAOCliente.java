@@ -51,7 +51,7 @@ public class DAOCliente {
 		}
 	}
 	
-	/**verificar porque o update só funciona quando todos os paramentros sao colocados no postman**/
+	/**verificar porque o update só funciona quando todos os parametros sao colocados no postman**/
 	
 	public static void atualizar(Cliente cliente) throws Exception {
 		
