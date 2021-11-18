@@ -1,8 +1,8 @@
 package br.senac.freehire.service;
 
 import java.util.List;
-import br.senac.freehire.dao.DAOProjeto;
-import br.senac.freehire.model.Projeto;
+import br.senac.freehire.dao.DAOServico;
+import br.senac.freehire.model.Servico;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -13,14 +13,14 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("projeto")
-public class ProjetoService {
+@Path("servico")
+public class ServicoService {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void inserir(Projeto projeto) {
+	public void inserir(Servico servico) {
 		try {
-			DAOProjeto.inserir(projeto);
+			DAOServico.inserir(servico);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -28,9 +28,9 @@ public class ProjetoService {
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public static void atualizar(Projeto projeto) {
+	public static void atualizar(Servico servico) {
 		try {
-			DAOProjeto.atualizar(projeto);
+			DAOServico.atualizar(servico);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -38,9 +38,9 @@ public class ProjetoService {
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void excluir(@QueryParam("id") int idProjeto) {
+	public void excluir(@QueryParam("id") int idServico) {
 		try {
-			DAOProjeto.excluir(idProjeto);
+			DAOServico.excluir(idServico);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -48,9 +48,9 @@ public class ProjetoService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Projeto> listar(){
+	public List<Servico> listar(){
 		try {
-			return DAOProjeto.listar();
+			return DAOServico.listar();
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -61,9 +61,9 @@ public class ProjetoService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("pesquisar")
-	public List<Projeto> pesquisar(@QueryParam("nome") String nomeProjeto){
+	public List<Servico> pesquisar(@QueryParam("nome") String nomeServico){
 		try {
-			return DAOProjeto.pesquisar(nomeProjeto);
+			return DAOServico.pesquisar(nomeServico);
 		}catch (Exception e){
 			e.printStackTrace();
 		}

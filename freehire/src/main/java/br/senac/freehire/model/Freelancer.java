@@ -3,13 +3,16 @@ package br.senac.freehire.model;
 public class Freelancer {
 	
 	private int idFreelancer;
+	private String login;
+	private String senha;
 	private String nome;
 	private String cpf;
+	private String dataDeNascimento;
 	private String rua;
+	private String numero;
 	private String bairro;
 	private String cidade;
 	private String uf;
-	private String numero;
 	private String cep;
 	private String telefone;
 	private String email;
@@ -21,6 +24,18 @@ public class Freelancer {
 	}
 	public void setIdFreelancer(int idFreelancer) {
 		this.idFreelancer = idFreelancer;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	public String getNome() {
 		return nome;
@@ -34,11 +49,23 @@ public class Freelancer {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	public String getDataDeNascimento() {
+		return dataDeNascimento;
+	}
+	public void setDataDeNascimento(String dataDeNascimento) {
+		this.dataDeNascimento = dataDeNascimento;
+	}
 	public String getRua() {
 		return rua;
 	}
 	public void setRua(String rua) {
 		this.rua = rua;
+	}
+	public String getNumero() {
+		return numero;
+	}
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 	public String getBairro() {
 		return bairro;
@@ -57,12 +84,6 @@ public class Freelancer {
 	}
 	public void setUf(String uf) {
 		this.uf = uf;
-	}
-	public String getNumero() {
-		return numero;
-	}
-	public void setNumero(String numero) {
-		this.numero = numero;
 	}
 	public String getCep() {
 		return cep;
@@ -94,7 +115,6 @@ public class Freelancer {
 	public void setObservacaoAvaliacao(String observacaoAvaliacao) {
 		this.observacaoAvaliacao = observacaoAvaliacao;
 	}
-	
 	
 	
 	
