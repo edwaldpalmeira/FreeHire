@@ -13,7 +13,7 @@ public class DAOServico {
 	public static void inserir(Servico servico) throws Exception {
 
 		String sql = "INSERT INTO servico (nomeServico, descricaoServico, valorServico, valorAvaliacao, "
-				+ "observacaoServico, idCliente" + " VALUES (?, ?, ?, ?, ?, ?)";
+				+ "observacaoServico, idCliente) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try (PreparedStatement in = Banco.connect().prepareStatement(sql)) {
 
@@ -42,7 +42,7 @@ public class DAOServico {
 	public static void atualizar(Servico servico) throws Exception {
 
 		String sql = "UPDATE servico SET nomeServico = ?, descricaoServico = ?, valorServico = ?, "
-				+ "valorAvaliacao = ?, observacaoAvaliacao = ? WHERE idServico = ?";
+				+ "valorAvaliacao = ?, observacaoServico = ? WHERE idServico = ?";
 
 		try (PreparedStatement in = Banco.connect().prepareStatement(sql)) {
 
@@ -97,8 +97,7 @@ public class DAOServico {
 
 		String sql = "SELECT s.idServico, s.nomeServico, s.descricaoServico, s.valorServico, s.valorAvaliacao,"
 				+ "s.observacaoServico, s.idCliente, c.Cli_nome "
-				+ "FROM servico s inner join cliente c on c.idCliente = s.idCliente;"
-				+ "WHERE nomeServico like ? ";
+				+ "FROM servico s inner join cliente c on c.idCliente = s.idCliente WHERE s.nomeServico like ?";
 
 		List<Servico> resultados = new ArrayList<Servico>();
 
@@ -121,6 +120,8 @@ public class DAOServico {
 				
 				Cliente cliente = new Cliente();
 				cliente.setIdCliente(res.getInt("idCliente"));
+				cliente.setNome(res.getString("cli_nome"));
+				
 				servico.setCliente(cliente);
 
 				resultados.add(servico);

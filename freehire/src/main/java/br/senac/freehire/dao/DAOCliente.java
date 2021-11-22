@@ -51,7 +51,7 @@ public class DAOCliente {
 	public static void atualizar(Cliente cliente) throws Exception {
 
 		String sql = "UPDATE cliente SET cli_login = ?, cli_senha = ?, cli_nome = ?, cli_cpf = ?, cli_dataDeNascimento = ?,"
-				+ "cli_rua = ?, cli_bairro = ?, cli_cidade = ?, cli_uf = ?, cli_numero = ?, cli_cep = ?, "
+				+ "cli_rua = ?, cli_numero = ?, cli_bairro = ?, cli_cidade = ?, cli_uf = ?, cli_cep = ?, "
 				+ "cli_telefone = ?, cli_email = ?, cli_avaliacao = ?, cli_observacaoAvaliacao = ? "
 				+ "WHERE idCliente = ?";
 

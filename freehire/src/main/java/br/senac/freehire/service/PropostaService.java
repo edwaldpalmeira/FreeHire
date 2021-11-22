@@ -61,7 +61,7 @@ public class PropostaService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("pesquisar")
-	public List<Proposta> pesquisar(@QueryParam("idProposta") int idProposta){
+	public List<Proposta> pesquisar(@QueryParam("id") int idProposta){
 		try {
 			return DAOProposta.pesquisar(idProposta);
 		}catch (Exception e){

@@ -8,7 +8,7 @@ public class Servico {
 	private Double valorServico;
 	private Double valorAvaliacao;
 	private String observacaoServico;
-	private Cliente cliente;
+	private Cliente cliente = new Cliente();
 
 	public int getIdServico() {
 		return idServico;

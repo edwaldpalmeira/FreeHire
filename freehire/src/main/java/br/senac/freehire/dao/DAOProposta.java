@@ -14,7 +14,7 @@ public class DAOProposta {
 	public static void inserir(Proposta proposta) throws Exception {
 
 		String sql = "INSERT INTO proposta (descricaoProposta, dataProposta, dataAvaliacao, valorProposta, valorAvaliacao,"
-				+ "observacaoProposta, idServico, idFrellancer)" + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "observacaoProposta, idServico, idFreelancer)" + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try (PreparedStatement in = Banco.connect().prepareStatement(sql)) {
 
@@ -44,9 +44,9 @@ public class DAOProposta {
 
 	public static void atualizar(Proposta proposta) throws Exception {
 
-		String sql = "UPDATE proposta SET descricaoProposta = ?, dataProposta  = ?, dataAvaliacao = ?,"
-				+ " valorProposta  = ?, valorAvaliacao = ?, observacaoProposta  = ?, idServico = ?"
-				+ " idFreelancer = ?, WHERE idProposta = ?";
+		String sql = "UPDATE proposta SET descricaoProposta = ?, dataProposta = ?, dataAvaliacao = ?,"
+				+ " valorProposta = ?, valorAvaliacao = ?, observacaoProposta = ?, idServico = ?,"
+				+ " idFreelancer = ? WHERE idProposta = ?";
 
 		try (PreparedStatement in = Banco.connect().prepareStatement(sql)) {
 
@@ -66,10 +66,9 @@ public class DAOProposta {
 
 	public static List<Proposta> listar() throws Exception {
 
-		String sql = "SELECT p.descricaoProposta, p.dataProposta, p.dataAvaliacao, p.valorProposta"
+		String sql = "SELECT p.idProposta, p.descricaoProposta, p.dataProposta, p.dataAvaliacao, p.valorProposta,"
 				+ "p.valorAvaliacao, p.observacaoProposta, s.idServico, s.nomeServico, f.idFreelancer, "
-				+ "f.free_nome * FROM proposta p inner join servico s on p.idProposta = s.idServico"
-				+ "inner join freelancer f on p.idFreelancer = f.idFreelancer";
+				+ "f.free_nome FROM proposta p inner join servico s on p.idServico = s.idServico inner join freelancer f on p.idFreelancer = f.idFreelancer;";
 
 		List<Proposta> resultados = new ArrayList<Proposta>();
 
@@ -108,8 +107,9 @@ public class DAOProposta {
 
 	public static List<Proposta> pesquisar(int idProposta) throws Exception {
 
-		String sql = "SELECT * FROM proposta p inner join servico s on p.idProposta = s.idServico "
-				+ "inner join freelancer f on p.idFreelancer = f.idFreelancer WHERE idProposta like ?";
+		String sql = "SELECT p.idProposta, p.descricaoProposta, p.dataProposta, p.dataAvaliacao, p.valorProposta,"
+				+ "p.valorAvaliacao, p.observacaoProposta, s.idServico, s.nomeServico, f.idFreelancer, "
+				+ "f.free_nome FROM proposta p inner join servico s on p.idServico = s.idServico inner join freelancer f on p.idFreelancer = f.idFreelancer WHERE p.idProposta like ?";
 
 		List<Proposta> resultados = new ArrayList<Proposta>();
 
@@ -133,10 +133,12 @@ public class DAOProposta {
 
 				Servico servico = new Servico();
 				servico.setIdServico(res.getInt("idServico"));
+				servico.setNomeServico(res.getString("nomeServico"));				
 				proposta.setServico(servico);
 				
 				Freelancer freelancer = new Freelancer();
 				freelancer.setIdFreelancer(res.getInt("idFreelancer"));
+				freelancer.setNome(res.getString("free_nome"));
 				proposta.setFreelancer(freelancer);
 
 				resultados.add(proposta);

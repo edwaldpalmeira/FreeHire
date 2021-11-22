@@ -52,7 +52,7 @@ public class DAOFreelancer {
 
 	public static void atualizar(Freelancer freelancer) throws Exception {
 
-		String sql = "UPDATE freelancer SET free_login, free_senha, free_nome = ?, free_cpf = ?, free_dataDeNascimento,"
+		String sql = "UPDATE freelancer SET free_login = ?, free_senha = ?, free_nome = ?, free_cpf = ?, free_dataDeNascimento = ?,"
 				+ "free_rua = ?, free_numero = ?, free_bairro = ?, free_cidade = ?, free_uf = ?, free_cep = ?, "
 				+ "free_telefone = ?, free_email = ?, free_avaliacao = ?, free_observacaoAvaliacao = ? "
 				+ "WHERE idFreelancer = ?";

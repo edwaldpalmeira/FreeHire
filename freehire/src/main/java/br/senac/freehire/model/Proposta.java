@@ -9,8 +9,8 @@ public class Proposta {
 	private Double valorProposta;
 	private Double valorAvaliacao;
 	private String observacaoProposta;
-	private Servico servico;
-	private Freelancer freelancer;
+	private Servico servico = new Servico();
+	private Freelancer freelancer = new Freelancer();
 
 	public int getIdProposta() {
 		return idProposta;
