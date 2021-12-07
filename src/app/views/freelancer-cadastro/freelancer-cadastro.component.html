@@ -1,0 +1,26 @@
+<div>
+    <ul class="menu">
+    <li mat-flat-button class="cadastrar" (click)="cadastrarFreelancer()">
+      Novo Freelancer
+    </li>
+  </ul>
+  <div class="form" *ngIf="freelancerInserir != undefined">
+    <h3>Cadastrar Freelancer</h3>
+        <input placeholder="Login" [(ngModel)]="freelancerInserir.login" required><br>
+        <input placeholder="Senha" [(ngModel)]="freelancerInserir.senha" required><br>
+        <input placeholder="Nome Completo" [(ngModel)]="freelancerInserir.nome" required><br>
+        <input placeholder="CPF" [(ngModel)]="freelancerInserir.cpf" required><br>
+        <input placeholder="Data de Nascimento" [(ngModel)]="freelancerInserir.dataDeNascimento"><br>     
+        <input placeholder="Rua" [(ngModel)]="freelancerInserir.rua"><br>      
+        <input placeholder="Numero" [(ngModel)]="freelancerInserir.numero"><br>
+        <input placeholder="Bairro" [(ngModel)]="freelancerInserir.bairro"><br>
+        <input placeholder="Cidade" [(ngModel)]="freelancerInserir.cidade"><br>       
+        <input placeholder="UF" [(ngModel)]="freelancerInserir.uf"><br>
+        <input placeholder="CEP" [(ngModel)]="freelancerInserir.cep"><br>       
+        <input placeholder="Telefone" [(ngModel)]="freelancerInserir.telefone"><br>        
+        <input placeholder="E-mail" [(ngModel)]="freelancerInserir.email"><br>
+
+    <button  class="btn btn-second" (click)="salvar()" >Cadastrar</button>
+    <button class="btn btn-second" (click)="cancelar()" class="btn btn-second">Cancelar</button>
+  </div>
+</div>

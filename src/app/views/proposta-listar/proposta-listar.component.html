@@ -1,0 +1,137 @@
+<div>
+    <h2>Lista de Propostas</h2>
+    <div>
+      <mat-table [dataSource]="proposta">
+          <!--TR-->
+          <ng-container matColumnDef="descricaoproposta">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                  Descrição
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let proposta">
+                  {{proposta.descricaoProposta}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="dataproposta">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                  Data(Proposta)
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let proposta">
+                  {{proposta.dataProposta}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="dataavaliacao">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                  Data(Avaliação)
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let proposta">
+                  {{proposta.dataAvaliacao}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="valorproposta">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                 Valor(Proposta)
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let proposta">
+                  {{proposta.valorProposta}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="valoravaliacao">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                  Valor(Avaliação)
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let proposta">
+                  {{proposta.valorAvaliacao}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="observacaoproposta">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                  Observação
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let proposta">
+                  {{proposta.observacaoProposta}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="nomeservico">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                  Nome do Serviço
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let proposta">
+                  {{proposta.servico.nomeServico}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="nomefreelancer">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                  Nome do Freelancer
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let proposta">
+                  {{proposta.freelancer.nome}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                 Ações
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let proposta">
+                  <button mat-button (click)="selecionarProposta(proposta)">
+                      <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-button (click)="excluir(proposta)"color="warn">
+                      <mat-icon>delete</mat-icon>
+                  </button>
+              </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columns"></mat-row>
+      </mat-table>
+  <div class="container" *ngIf="propostaEdicao != undefined">
+      <h3>Editar Proposta</h3>
+      <mat-form-field class="dados">
+          <mat-label>Descrição</mat-label>
+          <input matInput placeholder="Descrição" [(ngModel)]="propostaEdicao.descricaoProposta"><br>
+      </mat-form-field>
+      <mat-form-field class="dados">
+          <mat-label>Data(Proposta)</mat-label>
+          <input matInput placeholder="Data(Proposta)" [(ngModel)]="propostaEdicao.dataProposta"><br>
+      </mat-form-field>
+      <mat-form-field  class="dados">
+          <mat-label>Data(Avaliação)</mat-label>
+          <input matInput placeholder="Data da Avaliação" [(ngModel)]="propostaEdicao.dataAvaliacao"><br>
+      </mat-form-field>
+      <mat-form-field  class="dados">
+          <mat-label>Valor(Proposta)</mat-label>
+          <input matInput placeholder="Valor da Proposta" [(ngModel)]="propostaEdicao.valorProposta"><br>
+      </mat-form-field>
+      <mat-form-field  class="dados">
+          <mat-label>Valor(Avaliação)</mat-label>
+          <input matInput placeholder="Valor da Avaliação" [(ngModel)]="propostaEdicao.valorAvaliacao"><br>
+      </mat-form-field>
+      <mat-form-field  class="dados">
+          <mat-label>Observação</mat-label>
+          <input matInput placeholder="Observação Proposta" [(ngModel)]="propostaEdicao.observacaoProposta"><br>
+      </mat-form-field>
+      
+      <h3></h3>
+
+      <button mat-raised-button color="warn" (click)="salvar()">Salvar</button>
+      
+      <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="cancelar()">Cancelar</button>
+</div>
+

@@ -1,0 +1,144 @@
+.cadastrar{
+    background-color: #f34236;
+    color: white;
+    display: block;
+    height: 35px;
+    line-height: 35px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+}
+.content {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    display: flex;
+}
+.content::before {
+    content: "";
+    position: absolute;
+    background-color:black;
+    width: 50%;
+    height: 100%;
+    left: 0;
+}
+.title {
+    font-size: 35px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.title-primary {
+    font-size: 35px;
+    color: white;
+}
+.title-second {
+    color:black;
+}
+.description {
+    font-size: 14px;
+    font-weight: 300;
+    color: white;
+    line-height: 30px;
+}
+.description-primary {
+    color:gray;
+}
+.description-second {
+    color: black;
+}
+.btn {
+    border-radius: 15px;
+    text-transform: uppercase;
+    color: white;
+    font-size: 15px;
+    padding: 10px 50px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 200px;
+    align-self: center;
+    border-width: 0;
+    margin-top: 1rem;
+}
+.btn-second {
+    background-color:black;
+    border: 1px solid black;
+}
+.btn-second:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black
+}
+.first-content {
+    display: flex;
+}
+.first-content .second-column {
+    z-index: 11;
+}
+.first-column {
+    text-align: center;
+    width: 50%;
+    z-index: 12;
+}
+.second-column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form {
+    margin-left: 25%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+}
+.form input {
+    display: inline-block;
+    height: 45px;
+    border: none;
+    background-color:aliceblue;
+}
+.label-input {
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    margin: 8px;
+}
+.icon-modify {
+    color: black;
+    padding: 0 5px;
+}
+
+
+
+.second-content {
+    position: absolute;
+    display: flex;
+}
+.second-content .first-column {
+    order: 2;
+    z-index: -1;
+}
+.second-content .second-column {
+    order: 1;
+    z-index: -1;
+}
+.password{
+    color: black;
+    font-size: 14px;
+    margin: 15px 0;
+    text-align: center;
+}
+.password::first-letter {
+    text-transform: capitalize;
+}

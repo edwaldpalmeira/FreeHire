@@ -1,0 +1,29 @@
+<div>
+    <ul class="menu">
+    <li class="cadastrar" (click)="cadastrarProposta()">
+      Nova Proposta
+    </li>
+  </ul>
+  <div class="form" *ngIf="propostaInserir != undefined">
+    <h3>Cadastrar Propostas</h3>
+       
+        <input placeholder="Descrição da Proposta" [(ngModel)]="propostaInserir.descricaoProposta" required><br>
+        
+        <input placeholder="Data da Proposta" [(ngModel)]="propostaInserir.dataProposta"><br>
+
+        <input placeholder="Data da Avaliação" [(ngModel)]="propostaInserir.dataAvaliacao"><br>
+
+        <input placeholder="Valor da Proposta" [(ngModel)]="propostaInserir.valorProposta"><br>
+       
+        <input placeholder="Valor da Avaliação" [(ngModel)]="propostaInserir.valorAvaliacao"><br>
+       
+        <input placeholder="Observação Proposta" [(ngModel)]="propostaInserir.observacaoProposta"><br>
+        
+        <input placeholder="ID do Serviço" [(ngModel)]="propostaInserir.servico.idServico"><br>
+
+        <input placeholder="ID do Freelancer" [(ngModel)]="propostaInserir.freelancer.idFreelancer"><br>
+
+    <button  class="btn btn-second" (click)="salvar()" >Cadastrar</button>
+    <button (click)="cancelar()" class="btn btn-second">Cancelar</button>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<form>
+    <div class="row">
+        <div class="input-field col s12">
+            <label for="usuario" class="active">Login:</label>
+            <input #login="ngModel" [(ngModel)]="cliente.login" type="text" class="validate" id="usuario" placeholder="Informe o seu Login" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+        <label for="senha" class="active">Senha:</label>
+        <input #senha="ngModel"[(ngModel)]="cliente.senha" type="password" class="validate"  id="senha" placeholder="Senha" required>
+    </div>
+    </div>
+    <div *ngIf="login.invalid">
+        Login deve ser informado
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="fazerLogin()">Login</button>
+</form>

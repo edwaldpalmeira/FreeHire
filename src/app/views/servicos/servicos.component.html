@@ -1,0 +1,26 @@
+<div>
+    <ul class="menu">
+    <li class="cadastrar" (click)="cadastrarServicos()">
+      Novo Serviço
+    </li>
+  </ul>
+  <div class="form" *ngIf="servicosInserir != undefined">
+    <h3>Cadastrar Servicos</h3>
+       
+        <input placeholder="Nome do Serviço" [(ngModel)]="servicosInserir.nomeServico" required><br>
+       
+        <input placeholder="Descrição do Serviço" [(ngModel)]="servicosInserir.descricaoServico" required><br>
+        
+        <input placeholder="Valor do Serviço" [(ngModel)]="servicosInserir.valorServico"><br>
+       
+        <input placeholder="Valor da Avaliação" [(ngModel)]="servicosInserir.valorAvaliacao"><br>
+       
+        <input placeholder="Observação Avaliação" [(ngModel)]="servicosInserir.observacaoServico"><br>
+        
+        <input placeholder="ID do Cliente" [(ngModel)]="servicosInserir.cliente.idCliente"><br>
+
+    <button  class="btn btn-second" (click)="salvar()" >Cadastrar</button>
+    <button class="btn btn-second" (click)="cancelar()">Cancelar</button>
+  </div>
+</div>
+

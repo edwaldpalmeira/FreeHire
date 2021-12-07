@@ -1,0 +1,124 @@
+<div>
+    <h2>Lista de Serviços</h2>
+    <div>
+      <mat-table [dataSource]="servicos">
+          <!--TR-->
+          <ng-container matColumnDef="nomeservico">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                  Nome do Serviço
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let servicos">
+                  {{servicos.nomeServico}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="descricaoservico">
+            <!--TH-->
+            <mat-header-cell *matHeaderCellDef="">
+                Descrição
+            </mat-header-cell>
+            <!--TD-->
+            <mat-cell *matCellDef="let servicos">
+                {{servicos.descricaoServico}}
+            </mat-cell>
+        </ng-container>
+          <ng-container matColumnDef="valorservico">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                 Valor(Serviço)
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let servicos">
+                  {{servicos.valorServico}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="valoravaliacao">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                  Valor(Avaliação)
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let servicos">
+                  {{servicos.valorAvaliacao}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="observacaoservico">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                  Observação
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let servicos">
+                  {{servicos.observacaoServico}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="nomecliente">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                  Nome do Cliente
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let servicos">
+                  {{servicos.cliente.nome}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="telefone">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                  Telefone
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let servicos">
+                  {{servicos.cliente.telefone}}
+              </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+              <!--TH-->
+              <mat-header-cell *matHeaderCellDef="">
+                 Ações
+              </mat-header-cell>
+              <!--TD-->
+              <mat-cell *matCellDef="let servicos">
+                  <button mat-button (click)="selecionarServicos(servicos)">
+                      <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-button (click)="excluir(servicos)"color="warn">
+                      <mat-icon>delete</mat-icon>
+                  </button>
+              </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columns"></mat-row>
+      </mat-table>
+  <div class="container" *ngIf="servicosEdicao != undefined">
+      <h3>Editar Serviços</h3>
+      <mat-form-field class="dados">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Descrição" [(ngModel)]="servicosEdicao.nomeServico"><br>
+        </mat-form-field>
+      <mat-form-field class="dados">
+          <mat-label>Descrição</mat-label>
+          <input matInput placeholder="Descrição" [(ngModel)]="servicosEdicao.descricaoServico"><br>
+      </mat-form-field>>
+      <mat-form-field  class="dados">
+          <mat-label>Valor(Serviço)</mat-label>
+          <input matInput placeholder="Valor do Serviço" [(ngModel)]="servicosEdicao.valorServico"><br>
+      </mat-form-field>
+      <mat-form-field  class="dados">
+          <mat-label>Valor(Avaliação)</mat-label>
+          <input matInput placeholder="Valor da Avaliação" [(ngModel)]="servicosEdicao.valorAvaliacao"><br>
+      </mat-form-field>
+      <mat-form-field  class="dados">
+          <mat-label>Observação</mat-label>
+          <input matInput placeholder="Observação Serviço" [(ngModel)]="servicosEdicao.observacaoServico"><br>
+      </mat-form-field>
+      
+      <h3></h3>
+
+      <button mat-raised-button color="warn" (click)="salvar()">Salvar</button>
+      
+      <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="cancelar()">Cancelar</button>
+</div>
+
+

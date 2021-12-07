@@ -1,0 +1,217 @@
+<div>
+    <h2>Perfil</h2>
+
+    <div>
+        <mat-table [dataSource]="freelancer">
+            <!--TR-->
+            <ng-container matColumnDef="login">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                    Login
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.login}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="senha">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                    Senha
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.senha}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="nome">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                    Nome
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.nome}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="cpf">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                    CPF
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.cpf}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="datadenascimento">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                    Data De Nascimento
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.dataDeNascimento}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="endereco">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                    Endereço
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.rua}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="numero">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                    Nº
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.numero}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="bairro">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                    Bairro
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.bairro}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="cidade">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                    Cidade
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.cidade}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="uf">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                    UF
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.uf}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="cep">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                    CEP
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.cep}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="telefone">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                    Telefone
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.telefone}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                   E-mail
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    {{freelancer.email}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <!--TH-->
+                <mat-header-cell *matHeaderCellDef="">
+                   Ações
+                </mat-header-cell>
+                <!--TD-->
+                <mat-cell *matCellDef="let freelancer">
+                    <button mat-button (click)="selecionarFreelancer(freelancer)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-button (click)="excluir(freelancer)"color="warn">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columns"></mat-row>
+        </mat-table>
+    <div class="container" *ngIf="freelancerEdicao != undefined">
+        <h3>Editar Freelancer</h3>
+        <mat-form-field class="dados">
+            <mat-label>Login</mat-label>
+            <input matInput placeholder="Login" [(ngModel)]="freelancerEdicao.login"><br>
+        </mat-form-field>
+        <mat-form-field class="dados">
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" placeholder="Senha" [(ngModel)]="freelancerEdicao.senha"><br>
+        </mat-form-field>
+        <mat-form-field  class="dados">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Nome" [(ngModel)]="freelancerEdicao.nome"><br>
+        </mat-form-field>
+        <mat-form-field  class="dados">
+            <mat-label>CPF</mat-label>
+            <input matInput placeholder="CPF" [(ngModel)]="freelancerEdicao.cpf"><br>
+        </mat-form-field>
+        <mat-form-field  class="dados">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput placeholder="Data de Nascimento" [(ngModel)]="freelancerEdicao.dataDeNascimento"><br>
+        </mat-form-field>
+        <mat-form-field  class="dados">
+            <mat-label>Endereço</mat-label>
+            <input matInput placeholder="Rua" [(ngModel)]="freelancerEdicao.rua"><br>
+        </mat-form-field>
+        <mat-form-field  class="dados">
+            <mat-label>Numero</mat-label>
+            <input matInput placeholder="Numero" [(ngModel)]="freelancerEdicao.numero"><br>
+        </mat-form-field>
+        <mat-form-field  class="dados">
+            <mat-label>Bairro</mat-label>
+            <input matInput laceholder="Bairro" [(ngModel)]="freelancerEdicao.bairro"><br>
+        </mat-form-field>
+        <mat-form-field  class="dados">
+            <mat-label>Cidade</mat-label>
+            <input matInput placeholder="Cidade" [(ngModel)]="freelancerEdicao.cidade"><br>
+        </mat-form-field>
+        <mat-form-field  class="dados">
+            <mat-label>UF</mat-label>
+            <input matInput placeholder="UF" [(ngModel)]="freelancerEdicao.uf"><br>
+        </mat-form-field>
+        <mat-form-field  class="dados">
+            <mat-label>CEP</mat-label>
+            <input matInput placeholder="CEP" [(ngModel)]="freelancerEdicao.cep"><br>
+        </mat-form-field>
+        <mat-form-field  class="dados">
+            <mat-label>Telefone</mat-label>
+            <input matInput placeholder="Telefone" [(ngModel)]="freelancerEdicao.telefone"><br>
+        </mat-form-field>
+        <mat-form-field  class="dados">
+            <mat-label>E-mail</mat-label>
+            <input matInput placeholder="E-mail" [(ngModel)]="freelancerEdicao.email"><br>
+        </mat-form-field>
+
+        <h3></h3>
+
+        <button mat-raised-button color="warn" (click)="salvar()">Salvar</button>
+        
+        <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="cancelar()">Cancelar</button>
+    </div>
+</div>
+

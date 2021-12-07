@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav class="sidenav " #sidenav mode="side">
+      <mat-nav-list>
+        <!--local das rotas-->
+        <img class="logo" src="../assets/logo.novo.png" alt="">
+        <a mat-list-item routerLink="/home">Home</a>
+        <a mat-list-item >Cadastro de Cliente</a>
+        <a mat-list-item routerLink="/cliente">Perfil de Cliente</a>
+        <a mat-list-item>menu Item 3</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <!--local onde aparece as telas-->
+      <div style="min-height: calc(100vh - 64px);">
+        <main>
+          <mat-card>
+            <img class="logo-inicio" src="../assets/logo.novo.png" alt="">
+            <h1>Bem-Vindo</h1>
+            <p>Escolha uma das opções para continuar</p>
+            <a href="../src/app/views/cliente-cadastro/cliente-cadastro.component.html">Cliente</a>
+          </mat-card>
+        </main>
+      </div>
+     
+    </mat-sidenav-content>
+  </mat-sidenav-container>
